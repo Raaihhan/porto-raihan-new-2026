@@ -79,6 +79,20 @@ describe("portfolio page", () => {
     );
   });
 
+  it("opens the CV-backed phone number in WhatsApp from the contact section", () => {
+    render(<Home />);
+
+    expect(
+      screen.getByRole("link", { name: "Hubungi via WhatsApp" }),
+    ).toHaveAttribute("href", "https://wa.me/6281284697557");
+    expect(
+      screen.getByRole("link", { name: "Hubungi via WhatsApp" }),
+    ).toHaveAttribute("target", "_blank");
+    expect(
+      screen.getByRole("link", { name: "Hubungi via WhatsApp" }),
+    ).toHaveAttribute("rel", "noreferrer");
+  });
+
   it("exposes stable section targets for single-page navigation", () => {
     const { container } = render(<Home />);
 

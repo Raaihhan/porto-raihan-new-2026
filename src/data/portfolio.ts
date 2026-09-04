@@ -38,6 +38,7 @@ export const portfolioData = {
     email: "raihanamin2212@gmail.com",
     phone: "+62 812 8469 7557",
     phoneHref: "tel:+6281284697557",
+    whatsappHref: "https://wa.me/6281284697557",
     linkedin: "https://linkedin.com/in/muhammadraihandev/",
     cv: "/cv/muhammad-raihan-cv.pdf",
   },

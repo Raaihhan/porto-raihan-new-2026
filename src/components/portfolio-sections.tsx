@@ -5,6 +5,7 @@ import {
   MailIcon,
   PhoneIcon,
   SectionIcon,
+  WhatsAppIcon,
 } from "@/components/icons";
 import { navigation, portfolioData } from "@/data/portfolio";
 
@@ -296,19 +297,30 @@ export function ContactCta() {
       <p className="text-sm font-bold uppercase tracking-[0.28em] text-blue-200">Terbuka untuk berdiskusi</p>
       <h2 id="contact-title" className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">Mari Terhubung</h2>
       <p className="mx-auto mt-4 max-w-2xl text-blue-100">Mari berdiskusi tentang pengembangan backend, integrasi layanan, atau peluang untuk membangun solusi digital bersama.</p>
-      <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+      <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:items-start">
         <a
           href={`mailto:${portfolioData.contact.email}`}
           aria-label={`Kirim email ke ${portfolioData.contact.email}`}
-          className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 font-bold text-navy transition hover:-translate-y-0.5 hover:bg-blue-50"
+          className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 font-bold text-navy transition hover:-translate-y-0.5 hover:bg-blue-50 sm:min-w-64"
         >
           <MailIcon width={20} height={20} />
           Hubungi Saya
         </a>
-        <a href={portfolioData.contact.phoneHref} className="inline-flex items-center justify-center gap-2 rounded-xl border border-blue-300/50 px-6 py-3.5 font-semibold text-white transition hover:bg-white/10">
-          <PhoneIcon width={20} height={20} />
-          {portfolioData.contact.phone}
-        </a>
+        <div className="flex flex-col gap-3 sm:min-w-64">
+          <a href={portfolioData.contact.phoneHref} className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-blue-300/50 px-6 py-3.5 font-semibold text-white transition hover:bg-white/10">
+            <PhoneIcon width={20} height={20} />
+            {portfolioData.contact.phone}
+          </a>
+          <a
+            href={portfolioData.contact.whatsappHref}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 py-3.5 font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#1fbd5b]"
+          >
+            <WhatsAppIcon width={20} height={20} />
+            Hubungi via WhatsApp
+          </a>
+        </div>
       </div>
       </div>
     </section>

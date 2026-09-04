@@ -52,6 +52,15 @@ export function PhoneIcon(props: IconProps) {
   );
 }
 
+export function WhatsAppIcon(props: IconProps) {
+  return (
+    <IconBase {...props}>
+      <path d="M20.5 11.6a8.5 8.5 0 0 1-12.6 7.5L3.5 20.5l1.4-4.3a8.5 8.5 0 1 1 15.6-4.6Z" />
+      <path d="M8.1 7.7c.2-.4.4-.4.7-.4h.4c.2 0 .4.1.5.4l.7 1.7c.1.3 0 .5-.2.7l-.5.6c-.2.2-.1.4 0 .6.6 1 1.4 1.8 2.4 2.4.2.1.4.2.6 0l.7-.8c.2-.2.4-.3.7-.2l1.7.8c.3.1.4.3.4.5 0 .4-.2 1.2-.6 1.6-.4.5-1.2.8-1.9.8-1.1 0-2.8-.6-4.5-2.1-1.3-1.2-2.4-2.8-2.7-4.1-.3-1.1 0-1.9.4-2.5Z" />
+    </IconBase>
+  );
+}
+
 export function LinkedInIcon(props: IconProps) {
   return (
     <IconBase {...props}>
