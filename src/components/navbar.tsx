@@ -45,18 +45,18 @@ export function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-blue-100/80 bg-white/95 backdrop-blur">
       <div className="page-shell flex h-[72px] items-center justify-between gap-6">
         <a
           href="#beranda"
           onClick={() => selectNavigation("#beranda")}
-          className="text-lg font-extrabold tracking-tight text-navy transition-colors hover:text-royal sm:text-xl"
+          className="text-xl font-extrabold tracking-[-0.03em] text-royal transition-colors hover:text-navy sm:text-2xl"
         >
-          Muhammad <span className="text-royal">Raihan</span>
+          Muhammad Raihan
         </a>
         <nav
           aria-label="Navigasi utama"
-          className="hidden items-center gap-7 lg:flex"
+          className="hidden items-center gap-8 lg:flex"
         >
           {navigation.map((item) => (
             <a
@@ -64,7 +64,7 @@ export function Navbar() {
               href={item.href}
               aria-current={activeHref === item.href ? "page" : undefined}
               onClick={() => selectNavigation(item.href)}
-              className="nav-link relative text-sm font-medium text-slate-600 transition-colors hover:text-royal"
+              className="nav-link relative py-1 text-sm font-medium text-navy transition-colors hover:text-royal"
             >
               {item.label}
             </a>
@@ -73,7 +73,7 @@ export function Navbar() {
         <a
           href={portfolioData.contact.cv}
           download
-          className="hidden items-center gap-2 rounded-full bg-navy px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-royal md:inline-flex"
+          className="hidden items-center gap-2 rounded-full bg-gradient-to-r from-navy to-royal px-6 py-3 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(7,86,201,0.2)] transition hover:-translate-y-0.5 md:inline-flex"
         >
           Unduh CV <DownloadIcon width={18} height={18} />
         </a>

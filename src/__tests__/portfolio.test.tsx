@@ -52,6 +52,14 @@ describe("portfolio page", () => {
     expect(screen.getByText("OpenShift")).toBeInTheDocument();
   });
 
+  it("offers a direct path from the skills overview to experience", () => {
+    render(<Home />);
+
+    expect(
+      screen.getByRole("link", { name: "Lihat Selengkapnya" }),
+    ).toHaveAttribute("href", "#pengalaman");
+  });
+
   it("links to the exact CV-backed contact targets and local CV", () => {
     render(<Home />);
 
