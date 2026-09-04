@@ -1,8 +1,27 @@
+import {
+  AboutAndSkills,
+  ContactCta,
+  EducationAndCertification,
+  Experience,
+  Footer,
+  Hero,
+  Projects,
+} from "@/components/portfolio-sections";
+import { Navbar } from "@/components/navbar";
+
 export default function Home() {
   return (
-    <main>
-      <p>Backend Developer</p>
-      <h1>Membangun Solusi Teknologi yang Berdampak</h1>
-    </main>
+    <>
+      <Navbar />
+      <main>
+        <Hero />
+        <AboutAndSkills />
+        <Experience />
+        <EducationAndCertification />
+        <Projects />
+        <ContactCta />
+      </main>
+      <Footer />
+    </>
   );
 }
