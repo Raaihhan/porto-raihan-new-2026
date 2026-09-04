@@ -70,4 +70,28 @@ describe("portfolio page", () => {
       "/cv/muhammad-raihan-cv.pdf",
     );
   });
+
+  it("exposes stable section targets for single-page navigation", () => {
+    const { container } = render(<Home />);
+
+    for (const id of [
+      "beranda",
+      "tentang",
+      "pengalaman",
+      "proyek",
+      "pendidikan",
+      "kontak",
+    ]) {
+      expect(container.querySelector(`#${id}`)).toBeInTheDocument();
+    }
+  });
+
+  it("uses the supplied portrait with meaningful alternative text", () => {
+    render(<Home />);
+    const portrait = screen.getByRole("img", {
+      name: "Muhammad Raihan mengenakan setelan formal",
+    });
+
+    expect(portrait.getAttribute("src")).toContain("raihan-portrait");
+  });
 });
