@@ -52,7 +52,7 @@ export function Navbar() {
           onClick={() => selectNavigation("#beranda")}
           className="text-xl font-extrabold tracking-[-0.03em] text-royal transition-colors hover:text-navy sm:text-2xl"
         >
-          Muhammad Raihan
+          MRNRA
         </a>
         <nav
           aria-label="Navigasi utama"
