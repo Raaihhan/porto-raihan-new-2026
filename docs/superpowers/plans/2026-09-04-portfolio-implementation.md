@@ -68,7 +68,7 @@
 - Produces: `@/*` alias resolving to `src/*`.
 - Produces: a renderable App Router root with `RootLayout({ children }: Readonly<{ children: React.ReactNode }>)`.
 
-- [ ] **Step 1: Create package and compiler configuration**
+- [x] **Step 1: Create package and compiler configuration**
 
 Create `package.json` with these scripts and dependencies:
 
@@ -111,13 +111,13 @@ Create `package.json` with these scripts and dependencies:
 
 Configure strict TypeScript, `@/*`, App Router plugins, Tailwind content paths, the colors `navy`, `royal`, `sky`, and `mist`, and jsdom setup. Configure ESLint with `eslint-config-next/core-web-vitals` and `eslint-config-next/typescript`.
 
-- [ ] **Step 2: Install the pinned dependency graph**
+- [x] **Step 2: Install the pinned dependency graph**
 
 Run: `npm install`
 
 Expected: exit 0 and a new `package-lock.json` matching `package.json`.
 
-- [ ] **Step 3: Write the failing application-shell test**
+- [x] **Step 3: Write the failing application-shell test**
 
 Create `src/__tests__/portfolio.test.tsx`:
 
@@ -136,13 +136,13 @@ describe("portfolio page", () => {
 });
 ```
 
-- [ ] **Step 4: Run the shell test and confirm the expected failure**
+- [x] **Step 4: Run the shell test and confirm the expected failure**
 
 Run: `npm test -- src/__tests__/portfolio.test.tsx`
 
 Expected: FAIL because `src/app/page.tsx` does not yet expose the required heading and positioning.
 
-- [ ] **Step 5: Implement the minimal application shell**
+- [x] **Step 5: Implement the minimal application shell**
 
 Create a metadata-bearing root layout, Tailwind directives in `globals.css`, and this minimal page:
 
@@ -157,13 +157,13 @@ export default function Home() {
 }
 ```
 
-- [ ] **Step 6: Verify the shell test passes**
+- [x] **Step 6: Verify the shell test passes**
 
 Run: `npm test -- src/__tests__/portfolio.test.tsx`
 
 Expected: PASS with one passing test.
 
-- [ ] **Step 7: Commit the foundation**
+- [x] **Step 7: Commit the foundation**
 
 ```bash
 git add package.json package-lock.json next.config.ts tsconfig.json next-env.d.ts postcss.config.mjs tailwind.config.ts eslint.config.mjs vitest.config.ts vitest.setup.ts src/app src/__tests__/portfolio.test.tsx
@@ -186,7 +186,7 @@ git commit -m "chore: scaffold portfolio application"
 - Produces: `Hero`, `AboutAndSkills`, `Experience`, `EducationAndCertification`, `Projects`, `ContactCta`, and `Footer` server components.
 - Consumes: the `@/*` alias and App Router shell from Task 1.
 
-- [ ] **Step 1: Expand the page test with exact CV behaviors**
+- [x] **Step 1: Expand the page test with exact CV behaviors**
 
 Add independent tests to `src/__tests__/portfolio.test.tsx`:
 
@@ -242,13 +242,13 @@ it("links to the exact CV-backed contact targets and local CV", () => {
 });
 ```
 
-- [ ] **Step 2: Run the content tests and confirm the expected failures**
+- [x] **Step 2: Run the content tests and confirm the expected failures**
 
 Run: `npm test -- src/__tests__/portfolio.test.tsx`
 
 Expected: FAIL because the required sections, exact CV facts, and links are absent.
 
-- [ ] **Step 3: Create typed data with exact CV facts**
+- [x] **Step 3: Create typed data with exact CV facts**
 
 Define and export these core interfaces in `src/data/portfolio.ts`:
 
@@ -291,7 +291,7 @@ export const portfolioData = {
 
 Use the exact dates, roles, responsibilities, education, certification, and project details recorded in `CV_Muhammad Raihan N.pdf`; shorten only responsibility bullets that are too dense while preserving their meaning.
 
-- [ ] **Step 4: Copy the approved public assets**
+- [x] **Step 4: Copy the approved public assets**
 
 Run:
 
@@ -303,7 +303,7 @@ cp "CV_Muhammad Raihan N.pdf" public/cv/muhammad-raihan-cv.pdf
 
 Expected: both public assets exist and retain their original file types.
 
-- [ ] **Step 5: Implement reusable semantic sections**
+- [x] **Step 5: Implement reusable semantic sections**
 
 Create dependency-free SVG icons in `icons.tsx`. Build each named section component in `portfolio-sections.tsx` from `portfolioData`, using semantic `section`, `article`, `time`, lists, and descriptive links. Compose them in `page.tsx`:
 
@@ -339,13 +339,13 @@ export default function Home() {
 
 Until Task 3 adds the interactive navbar, create a server-rendered `Navbar` with all links and the download button so this task remains buildable.
 
-- [ ] **Step 6: Verify all portfolio content tests pass**
+- [x] **Step 6: Verify all portfolio content tests pass**
 
 Run: `npm test -- src/__tests__/portfolio.test.tsx`
 
 Expected: PASS for the introduction, required sections, CV facts, skills, and link targets.
 
-- [ ] **Step 7: Commit semantic content and assets**
+- [x] **Step 7: Commit semantic content and assets**
 
 ```bash
 git add src/data src/components src/app/page.tsx src/__tests__/portfolio.test.tsx public/images/raihan-portrait.png public/cv/muhammad-raihan-cv.pdf
@@ -362,7 +362,7 @@ git commit -m "feat: add CV-backed portfolio content"
 - Produces: `Navbar(): JSX.Element`, a client component with `aria-expanded` and `aria-controls="mobile-navigation"`.
 - Consumes: navigation and contact data from `src/data/portfolio.ts`.
 
-- [ ] **Step 1: Write failing mobile-navigation tests**
+- [x] **Step 1: Write failing mobile-navigation tests**
 
 Create `src/__tests__/navbar.test.tsx`:
 
@@ -389,23 +389,23 @@ describe("Navbar", () => {
 });
 ```
 
-- [ ] **Step 2: Run the navigation test and confirm the expected failure**
+- [x] **Step 2: Run the navigation test and confirm the expected failure**
 
 Run: `npm test -- src/__tests__/navbar.test.tsx`
 
 Expected: FAIL because the server-rendered navbar has no menu button or interactive state.
 
-- [ ] **Step 3: Implement the minimal client-side menu state**
+- [x] **Step 3: Implement the minimal client-side menu state**
 
 Add `"use client"`, an `open` boolean, button labels that change between “Buka menu navigasi” and “Tutup menu navigasi”, `aria-expanded`, and `aria-controls`. Render desktop and mobile nav groups from the same navigation data and close the menu from every mobile anchor's `onClick`.
 
-- [ ] **Step 4: Verify navigation and portfolio tests pass**
+- [x] **Step 4: Verify navigation and portfolio tests pass**
 
 Run: `npm test`
 
 Expected: PASS for both test files with no jsdom errors or React warnings.
 
-- [ ] **Step 5: Commit navigation behavior**
+- [x] **Step 5: Commit navigation behavior**
 
 ```bash
 git add src/components/navbar.tsx src/__tests__/navbar.test.tsx
@@ -427,7 +427,7 @@ git commit -m "feat: add accessible mobile navigation"
 - Produces: optimized portrait rendered with `next/image`, meaningful alt text, and responsive `sizes`.
 - Consumes: Tailwind brand tokens and all semantic components from Tasks 1–3.
 
-- [ ] **Step 1: Write failing visual-contract tests**
+- [x] **Step 1: Write failing visual-contract tests**
 
 Add to `src/__tests__/portfolio.test.tsx`:
 
@@ -448,13 +448,13 @@ it("uses the supplied portrait with meaningful alternative text", () => {
 });
 ```
 
-- [ ] **Step 2: Run the visual-contract tests and confirm the expected failures**
+- [x] **Step 2: Run the visual-contract regression tests**
 
 Run: `npm test -- src/__tests__/portfolio.test.tsx`
 
-Expected: FAIL for any missing section ID and for a portrait that is not yet rendered through the intended asset.
+Expected: PASS because stable section IDs and the intended portrait asset were introduced with the semantic content in Task 2; visual fidelity is verified through responsive renders in Step 5.
 
-- [ ] **Step 3: Implement the responsive visual system**
+- [x] **Step 3: Implement the responsive visual system**
 
 Apply Tailwind classes and small global CSS rules to reproduce the approved design:
 
@@ -481,19 +481,19 @@ Use `next/image` for the portrait:
 />
 ```
 
-- [ ] **Step 4: Verify behavior after styling**
+- [x] **Step 4: Verify behavior after styling**
 
 Run: `npm test`
 
 Expected: PASS with all content, navigation, section-target, portrait, and interaction tests green.
 
-- [ ] **Step 5: Start the application for visual inspection**
+- [x] **Step 5: Start the application for visual inspection**
 
 Run: `npm run dev`
 
 Inspect at 390×844, 768×1024, and 1440×900. Confirm no horizontal overflow, no overlapping hero content, readable experience bullets, functional mobile navigation, correct download/contact links, and no unsupported statistic card or watermark.
 
-- [ ] **Step 6: Commit the responsive design**
+- [x] **Step 6: Commit the responsive design**
 
 ```bash
 git add src/app src/components src/__tests__/portfolio.test.tsx tailwind.config.ts
@@ -509,7 +509,7 @@ git commit -m "feat: match responsive portfolio design"
 - Consumes: the complete application from Tasks 1–4.
 - Produces: evidence that tests, lint, type checking, production compilation, content constraints, and repository hygiene pass.
 
-- [ ] **Step 1: Run the complete automated verification**
+- [x] **Step 1: Run the complete automated verification**
 
 Run each command separately:
 
@@ -523,7 +523,7 @@ git diff --check
 
 Expected: every command exits 0 with no test failures, lint errors, TypeScript errors, build errors, or whitespace errors.
 
-- [ ] **Step 2: Audit prohibited and unsupported content**
+- [x] **Step 2: Audit prohibited and unsupported content**
 
 Run:
 
@@ -533,7 +533,7 @@ rg -n -i "watermark|inspired by|terinspirasi|2\+|5\+|100%|Aglonera|Feb 2025 – 
 
 Expected: no matches.
 
-- [ ] **Step 3: Audit exact required contact and employment data**
+- [x] **Step 3: Audit exact required contact and employment data**
 
 Run:
 
@@ -543,13 +543,13 @@ rg -n "raihanamin2212@gmail.com|muhammadraihandev|Dec 2025 – Present|Feb 2025 
 
 Expected: all five CV-derived values are present in the data source.
 
-- [ ] **Step 4: Inspect the final scope**
+- [x] **Step 4: Inspect the final scope**
 
 Run: `git status --short && git diff --stat HEAD`
 
 Expected: only the Next.js portfolio implementation, approved copied assets, tests, and plan-related files appear; original user-supplied inputs remain intact.
 
-- [ ] **Step 5: Commit verification-only corrections if any were required**
+- [x] **Step 5: Commit verification-only corrections if any were required**
 
 ```bash
 git add package.json package-lock.json next.config.ts tsconfig.json next-env.d.ts postcss.config.mjs tailwind.config.ts eslint.config.mjs vitest.config.ts vitest.setup.ts src public
