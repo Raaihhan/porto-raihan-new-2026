@@ -77,7 +77,15 @@ export function Hero() {
           </a>
         </div>
       </div>
-        <div className="relative self-end lg:h-[570px]">
+        <div className="portrait-scene relative self-end overflow-hidden rounded-t-[3rem] lg:h-[570px]">
+          <Image
+            src="/images/gedung.png"
+            alt=""
+            fill
+            sizes="(min-width: 1024px) 48vw, 92vw"
+            className="portrait-building object-cover object-center"
+          />
+          <div aria-hidden="true" className="portrait-building-shade" />
           <div aria-hidden="true" className="portrait-halo" />
           <Image
             src="/images/raihan-portrait.png"
@@ -86,7 +94,7 @@ export function Hero() {
             height={1402}
             priority
             sizes="(min-width: 1024px) 48vw, (min-width: 768px) 62vw, 92vw"
-            className="relative z-10 mx-auto max-h-[510px] w-auto rounded-t-[44%] object-contain object-bottom mix-blend-multiply lg:absolute lg:bottom-0 lg:left-1/2 lg:max-h-[570px] lg:-translate-x-1/2"
+            className="relative z-10 mx-auto max-h-[510px] w-auto object-contain object-bottom mix-blend-multiply lg:absolute lg:bottom-0 lg:left-1/2 lg:max-h-[570px] lg:-translate-x-1/2"
           />
         </div>
       </div>
@@ -141,11 +149,15 @@ export function Experience() {
             key={experience.company}
             className="timeline-item relative grid gap-6 border-b border-slate-200 py-9 first:pt-2 last:border-0 last:pb-0 lg:grid-cols-[140px_280px_1fr] lg:gap-8"
           >
-            <div
-              aria-hidden="true"
-              className="grid h-20 w-32 place-items-center rounded-2xl border border-blue-100 bg-white px-4 text-center text-lg font-black text-royal shadow-sm"
-            >
-              {experience.shortName}
+            <div className="grid h-20 w-32 place-items-center overflow-hidden rounded-2xl border border-blue-100 bg-white px-4 shadow-sm">
+              <Image
+                src={experience.logo}
+                alt={experience.logoAlt}
+                width={1536}
+                height={1024}
+                sizes="128px"
+                className="max-h-14 w-auto object-contain"
+              />
             </div>
             <div className="pt-1">
               <h3 className="text-lg font-extrabold text-navy">
@@ -183,7 +195,16 @@ export function EducationAndCertification() {
       <article>
         <SectionHeading title="Pendidikan" />
         <div className="section-card flex h-[calc(100%-68px)] flex-col gap-5 p-7 sm:flex-row sm:items-center sm:p-8">
-          <div aria-hidden="true" className="grid h-20 w-20 shrink-0 place-items-center rounded-2xl bg-sky text-2xl font-black text-royal">UNNES</div>
+          <div className="grid h-20 w-20 shrink-0 place-items-center overflow-hidden rounded-2xl border border-blue-100 bg-white p-2 shadow-sm">
+            <Image
+              src="/images/brands/unnes.png"
+              alt="Logo Universitas Negeri Semarang"
+              width={1536}
+              height={1024}
+              sizes="80px"
+              className="h-full w-full object-contain"
+            />
+          </div>
           <div className="flex-1">
             <h3 className="text-lg font-extrabold text-navy">{education.institution}</h3>
             <p className="mt-1 text-slate-600">{education.degree}</p>
@@ -198,7 +219,16 @@ export function EducationAndCertification() {
       <article>
         <SectionHeading title="Sertifikasi" />
         <div className="section-card flex h-[calc(100%-68px)] flex-col gap-5 p-7 sm:flex-row sm:items-center sm:p-8">
-          <div aria-hidden="true" className="grid h-20 w-24 shrink-0 place-items-center rounded-2xl bg-slate-950 text-xl font-black text-white">Udemy</div>
+          <div className="grid h-20 w-24 shrink-0 place-items-center overflow-hidden rounded-2xl border border-violet-100 bg-white shadow-sm">
+            <Image
+              src="/images/brands/udemy.png"
+              alt="Logo Udemy"
+              width={1536}
+              height={1024}
+              sizes="96px"
+              className="max-w-none w-[190%] justify-self-start object-contain"
+            />
+          </div>
           <div className="flex-1">
             <h3 className="text-lg font-extrabold text-navy">{certification.name}</h3>
             <p className="mt-1 text-slate-600">{certification.issuer}</p>

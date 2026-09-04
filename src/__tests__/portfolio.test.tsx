@@ -94,4 +94,36 @@ describe("portfolio page", () => {
 
     expect(portrait.getAttribute("src")).toContain("raihan-portrait");
   });
+
+  it("shows the supplied organization logos", () => {
+    render(<Home />);
+
+    const expectedLogos = [
+      ["Logo Bank Rakyat Indonesia", "bri.png"],
+      ["Logo PT Steradian Data Optima", "steradian.jpeg"],
+      ["Logo Universitas Negeri Semarang", "unnes.png"],
+      ["Logo Udemy", "udemy.png"],
+    ] as const;
+
+    for (const [alternativeText, filename] of expectedLogos) {
+      expect(
+        screen.getByRole("img", { name: alternativeText }).getAttribute("src"),
+      ).toContain(filename);
+    }
+  });
+
+  it("places the supplied building image behind the hero portrait", () => {
+    const { container } = render(<Home />);
+    const hero = container.querySelector("#beranda");
+    const building = hero?.querySelector('img[src*="gedung.png"]');
+    const portrait = screen.getByRole("img", {
+      name: "Muhammad Raihan mengenakan setelan formal",
+    });
+
+    expect(building).toBeInTheDocument();
+    expect(building).toHaveAttribute("alt", "");
+    expect(building?.compareDocumentPosition(portrait)).toBe(
+      Node.DOCUMENT_POSITION_FOLLOWING,
+    );
+  });
 });

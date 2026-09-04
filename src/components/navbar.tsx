@@ -1,18 +1,55 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DownloadIcon } from "@/components/icons";
 import { navigation, portfolioData } from "@/data/portfolio";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [activeHref, setActiveHref] = useState(navigation[0].href);
   const menuLabel = open ? "Tutup menu navigasi" : "Buka menu navigasi";
+
+  useEffect(() => {
+    const sections = navigation
+      .map((item) => document.querySelector<HTMLElement>(item.href))
+      .filter((section): section is HTMLElement => section !== null);
+
+    if (sections.length === 0 || !("IntersectionObserver" in window)) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const activeEntry = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (first, second) =>
+              Math.abs(first.boundingClientRect.top - 72) -
+              Math.abs(second.boundingClientRect.top - 72),
+          )[0];
+
+        if (activeEntry) {
+          setActiveHref(`#${activeEntry.target.id}`);
+        }
+      },
+      { rootMargin: "-18% 0px -68%", threshold: 0 },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  const selectNavigation = (href: string) => {
+    setActiveHref(href);
+    setOpen(false);
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur">
       <div className="page-shell flex h-[72px] items-center justify-between gap-6">
         <a
           href="#beranda"
+          onClick={() => selectNavigation("#beranda")}
           className="text-lg font-extrabold tracking-tight text-navy transition-colors hover:text-royal sm:text-xl"
         >
           Muhammad <span className="text-royal">Raihan</span>
@@ -25,7 +62,9 @@ export function Navbar() {
             <a
               key={item.href}
               href={item.href}
-              className="nav-link text-sm font-medium text-slate-600 transition-colors hover:text-royal"
+              aria-current={activeHref === item.href ? "page" : undefined}
+              onClick={() => selectNavigation(item.href)}
+              className="nav-link relative text-sm font-medium text-slate-600 transition-colors hover:text-royal"
             >
               {item.label}
             </a>
@@ -59,8 +98,9 @@ export function Navbar() {
             <a
               key={item.href}
               href={item.href}
-              onClick={() => setOpen(false)}
-              className="block rounded-xl px-4 py-3 font-medium text-slate-700 transition hover:bg-sky hover:text-royal"
+              aria-current={activeHref === item.href ? "page" : undefined}
+              onClick={() => selectNavigation(item.href)}
+              className="mobile-nav-link block rounded-xl px-4 py-3 font-medium text-slate-700 transition hover:bg-sky hover:text-royal"
             >
               {item.label}
             </a>

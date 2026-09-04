@@ -5,7 +5,8 @@ export interface NavigationItem {
 
 export interface ExperienceItem {
   company: string;
-  shortName: string;
+  logo: string;
+  logoAlt: string;
   role: string;
   location: string;
   period: string;
@@ -59,7 +60,8 @@ export const portfolioData = {
   experiences: [
     {
       company: "Bank Rakyat Indonesia (BRI)",
-      shortName: "BRI",
+      logo: "/images/brands/bri.png",
+      logoAlt: "Logo Bank Rakyat Indonesia",
       role: "Associate IT - Project Officer 3 Level 6",
       location: "Jakarta",
       period: "Dec 2025 – Present",
@@ -74,7 +76,8 @@ export const portfolioData = {
     },
     {
       company: "PT Steradian Data Optima",
-      shortName: "Steradian",
+      logo: "/images/brands/steradian.jpeg",
+      logoAlt: "Logo PT Steradian Data Optima",
       role: "Backend Developer",
       location: "Jakarta",
       period: "Feb 2025 – Dec 2025",
