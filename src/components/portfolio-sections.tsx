@@ -320,7 +320,7 @@ export function Footer() {
     <footer className="bg-[#061f46] py-12 text-white">
       <div className="page-shell grid gap-8 md:grid-cols-[1fr_auto_auto] md:items-center">
       <div>
-        <strong className="text-xl font-extrabold">Muhammad <span className="text-blue-300">Raihan</span></strong>
+        <strong className="text-xl font-extrabold">MR<span className="text-blue-300">NRA</span></strong>
         <p className="mt-1 text-sm text-blue-200">{portfolioData.title} · Building Better Solutions</p>
       </div>
       <nav aria-label="Navigasi footer" className="flex flex-wrap gap-x-5 gap-y-3 text-sm text-blue-100">
